@@ -59,31 +59,25 @@ end
 def call_friend(friend)
     self.happiness += 3
     friend.happiness += 3
-    self.happiness = 10 if happiness > 10
-    friend.happiness = 10 if friend.happiness > 10
     "Hi #{friend.name}! It's #{self.name}. How are you?"
 end
-end 
 
 
-def start_conversation(person, topic)
-    if topic == "politics"
-        self.happiness -= 2
-        person.happiness -= 2
-        self.happiness = 0 if happiness < 0
-        person.happiness = 0 if person.happiness < 0
+def start_conversation(friend,topic)
+    case topic
+    when "politics"
+        self.happiness -=2
+        friend.happiness -=2
         "blah blah partisan blah lobbyist"
-        
-           elsif topic == "weather"
-            self.happiness += 1
-            person.happiness += 1
-            self.happiness = 10 if happiness > 10
-            person.happiness = 10 if person.happiness > 10
-            "blah blah sun blah rain"
-        else
-            "blah blah blah blah blah"
-        end
+    when "weather"
+        self.happiness += 1
+        friend.happiness += 1
+        "blah blah sun blah rain"
+    else
+      "blah blah blah blah blah"
     end
+end
 
+end
 
 
