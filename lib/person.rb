@@ -1,60 +1,48 @@
 # your code goes here
 
 class Person 
-    attr_reader :name,  :happiness, :hygiene
-    attr_accessor :bank_account
+ attr_reader :name, :happiness, :hygiene
+
+ attr_accessor :bank_account
 
  def initialize(name)
-    @name = name
-    @bank_account = 25
+    @name = name 
+    @bank_account = 25 
     @happiness = 8
     @hygiene = 8
  end 
-
+ 
  def happiness=(new_happiness)
-    @happiness = if new_happiness > 10
-             10
-    elsif 
-    new_happiness < 0
-      0
-    else 
-    new_happiness
-    end
- end
+    @happiness = new_happiness.clamp(0,10)
+ end 
 
  def hygiene=(new_hygiene)
-    @hygiene = if new_hygiene > 10
-        10
-        elsif new_hygiene < 0
-            0
-        else
-            new_hygiene
-    end
-end
+    @hygiene = new_hygiene.clamp(0,10)
+ end 
 
-def happy?
+ def happy?
     happiness > 7
-end
+ end 
 
-def clean?
+ def clean?
     hygiene > 7
-end
+ end 
 
 def get_paid(amount)
     self.bank_account += amount
-    "all about the benjamins"
-end
+   "all about the benjamins"
+end 
 
-def take_bath
-    self.hygiene += 4
+def take_bath 
+    self.hygiene += 4 
     "♪ Rub-a-dub just relaxing in the tub ♫"
 end
 
-def work_out
+def work_out 
     self.hygiene -= 3
     self.happiness += 2
-    "♪ another one bites the dust ♫"
-end
+     "♪ another one bites the dust ♫"
+end 
 
 def call_friend(friend)
     self.happiness += 3
@@ -62,20 +50,19 @@ def call_friend(friend)
     "Hi #{friend.name}! It's #{self.name}. How are you?"
 end
 
-
-def start_conversation(friend,topic)
+  def start_conversation(person, topic)
     case topic
     when "politics"
-        self.happiness -=2
-        friend.happiness -=2
+        self.happiness -= 2
+        person.happiness -= 2
         "blah blah partisan blah lobbyist"
     when "weather"
-        self.happiness += 1
-        friend.happiness += 1
-        "blah blah sun blah rain"
-    else
-      "blah blah blah blah blah"
-    end
+    self.happiness += 1
+    person.happiness += 1
+    "blah blah sun blah rain"
+    else 
+    "blah blah blah blah blah"
+end
 end
 
 end
